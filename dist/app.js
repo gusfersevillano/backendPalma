@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
 const path_1 = __importDefault(require("path"));
+const cors_1 = __importDefault(require("cors"));
 const index_1 = __importDefault(require("./routes/index"));
 const app = express_1.default();
 //setting
@@ -13,6 +14,7 @@ app.set('port', process.env.PORT || 3000);
 //middleware
 app.use(morgan_1.default('dev')); // para ver lineas por consola
 app.use(express_1.default.json()); //convierte los datos a un archivo json
+app.use(cors_1.default()); //ojo esto me estaba dando un error del tipo OPTIONS ojo 
 app.use(express_1.default.urlencoded({ extended: false })); // permite  convertie datos de un formulario a json
 //routes
 app.use('/api', index_1.default);
