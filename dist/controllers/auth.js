@@ -1,4 +1,13 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -6,9 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = require("../database");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
-exports.signup = async (req, res) => {
+exports.signup = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const telefono = req.body.Telefono;
-    const telefonoExists = await database_1.pool.query('SELECT *FROM "PALMA"."Usuarios" where "Telefono" = $1', [telefono]);
+    const telefonoExists = yield database_1.pool.query('SELECT *FROM "PALMA"."Usuarios" where "Telefono" = $1', [telefono]);
     //console.log(telefonoExists.rowCount);
     if (telefonoExists.rowCount > 0) {
         return res.status(400).json('este teléfono ya existe');
@@ -21,9 +30,9 @@ exports.signup = async (req, res) => {
         var hash = bcrypt.hashSync(req.body.Clave, salt);
         //console.log(salt);
         //console.log(hash);
-        const id_u = await database_1.pool.query('SELECT max("Id_usuarios") FROM "PALMA"."Usuarios";');
+        const id_u = yield database_1.pool.query('SELECT max("Id_usuarios") FROM "PALMA"."Usuarios";');
         const _id = id_u.rows[0].max + 1;
-        const Response = await database_1.pool.query('INSERT INTO "PALMA"."Usuarios"("Id_usuarios", "Nombre", "Telefono", "Rol", "Clave", "Estado") VALUES ($1, $2, $3, $4, $5, $6)', [id_u.rows[0].max + 1, Nombre, Telefono, Rol, hash, Estado]);
+        const Response = yield database_1.pool.query('INSERT INTO "PALMA"."Usuarios"("Id_usuarios", "Nombre", "Telefono", "Rol", "Clave", "Estado") VALUES ($1, $2, $3, $4, $5, $6)', [id_u.rows[0].max + 1, Nombre, Telefono, Rol, hash, Estado]);
         const token = jsonwebtoken_1.default.sign({ Id_usuarios: _id }, process.env.TOKEN_SECRET || 'tokentess', {
             expiresIn: 60 * 60 * 24
         });
@@ -34,11 +43,11 @@ exports.signup = async (req, res) => {
     catch (e) {
         res.status(400).json(e);
     }
-};
-exports.signin = async (req, res) => {
+});
+exports.signin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const Telefono = req.body.Telefono;
     const Clave = req.body.Clave;
-    const Response = await database_1.pool.query('SELECT *FROM "PALMA"."Usuarios" where "Telefono" = $1', [Telefono]);
+    const Response = yield database_1.pool.query('SELECT *FROM "PALMA"."Usuarios" where "Telefono" = $1', [Telefono]);
     console.log(Response.rowCount);
     if (Response.rowCount == 0) {
         return res.status(400).json('teléfono o contraseña invalidos');
@@ -52,7 +61,7 @@ exports.signin = async (req, res) => {
     });
     // res.json(user);
     res.header('auth-token', token).json(Response.rows);
-};
+});
 /*
 export const datoUsuario = async (req: Request, res: Response) => {
        console.log(req.body.idv);
@@ -79,3 +88,4 @@ export const profile = async (req: Request, res: Response) => {
     
 };
 */ 
+//# sourceMappingURL=auth.js.map

@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon src/index.ts",
     "build": "tsc",
     "clean": "rimraf dist",
-    "start": "npm run build && node dist/index.js",
-    "dev": "nodemon src/index.ts"
+    "start": "npm run build && node dist/index.js"
   },
   "keywords": [],
   "author": "Gustavo Sevillano",

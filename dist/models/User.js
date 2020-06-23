@@ -42,3 +42,4 @@ userSchema.methods.validatePassword = async function (password: string): Promise
 
 export default model<IUser>('User', userSchema);
 */ 
+//# sourceMappingURL=User.js.map

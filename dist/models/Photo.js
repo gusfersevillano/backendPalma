@@ -27,3 +27,4 @@ export interface IPhoto extends Document {
 
 export default model<IPhoto>('Photo', schema);
 */ 
+//# sourceMappingURL=Photo.js.map

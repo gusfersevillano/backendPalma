@@ -21,3 +21,4 @@ app.use('/api', index_1.default);
 // este folder para esta aplicación será almecenado para archivos públics
 app.use('/uploads', express_1.default.static(path_1.default.resolve('uploads')));
 exports.default = app;
+//# sourceMappingURL=app.js.map

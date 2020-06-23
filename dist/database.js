@@ -8,3 +8,4 @@ exports.pool = new pg_1.Pool({
     password: '290ygoZ5Fa',
     database: 'geobigda_tecnisoil01',
 });
+//# sourceMappingURL=database.js.map

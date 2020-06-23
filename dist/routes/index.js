@@ -70,3 +70,4 @@ router.get('/fincamap/:finca', index_controller_10.getPProduccionbyFinca);
 router.get('/fincamapC/:finca', index_controller_11.getCCalidadbyFinca);
 //router.get('/test', (req, res) => res.send('Prueba Postgres'))
 exports.default = router;
+//# sourceMappingURL=index.js.map
