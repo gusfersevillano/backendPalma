@@ -18,7 +18,8 @@ export const signup = async (req: Request, res: Response) => {
 
     // Saving a new User
     // alsdfjlasdjfl  
-    
+    //modificacion
+    //este es parafo creado desde pruebagit
   
     try {
       const {Nombre, Telefono, Rol, Clave, Estado }=(req.body);
