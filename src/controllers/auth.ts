@@ -17,6 +17,8 @@ export const signup = async (req: Request, res: Response) => {
     }
 
     // Saving a new User
+    // alsdfjlasdjfl  
+    
   
     try {
       const {Nombre, Telefono, Rol, Clave, Estado }=(req.body);
