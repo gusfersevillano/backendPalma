@@ -20,6 +20,9 @@ export const signup = async (req: Request, res: Response) => {
     // alsdfjlasdjfl  
     //modificacion
     //este es parafo creado desde pruebagit, aca hay un conflicto de intereses
+    //este es parafo creado desde pruebagit
+
+    //este es párrafo creado desde prueba2git
   
     try {
       const {Nombre, Telefono, Rol, Clave, Estado }=(req.body);
