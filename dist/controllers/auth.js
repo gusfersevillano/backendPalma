@@ -12,6 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.signin = exports.signup = void 0;
 const database_1 = require("../database");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
@@ -23,6 +24,11 @@ exports.signup = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         return res.status(400).json('este teléfono ya existe');
     }
     // Saving a new User
+    // alsdfjlasdjfl  
+    //modificacion
+    //este es parafo creado desde pruebagit, aca hay un conflicto de intereses
+    //este es parafo creado desde pruebagit
+    //este es párrafo creado desde prueba2git
     try {
         const { Nombre, Telefono, Rol, Clave, Estado } = (req.body);
         var bcrypt = require('bcryptjs');
